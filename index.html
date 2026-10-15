@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名湯めぐり - 日本の温泉紹介</title>
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #fcfaf2; /* 温かみのある和風の白 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #3a2414; /* 渋い木の色 */
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+        }
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* メインコンテンツの外枠 */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 温泉紹介のカードレイアウト */
+        .onsen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1-fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .onsen-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0dcd3;
+            transition: transform 0.3s ease;
+        }
+
+        .onsen-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 代替用の画像ダミーエリア（写真を入れるとより綺麗になります） */
+        .onsen-image {
+            height: 200px;
+            background-color: #d1c7bd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 各温泉カードの色分け用背景（ダミー用） */
+        #kusatsu .onsen-image { background-color: #a3b899; }
+        #hakone .onsen-image { background-color: #bf9b30; }
+        #arima .onsen-image { background-color: #b86b5c; }
+
+        .onsen-content {
+            padding: 20px;
+        }
+
+        .onsen-content h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: #3a2414;
+            border-bottom: 2px solid #9e2a2b; /* アクセントの朱色 */
+            padding-bottom: 5px;
+        }
+
+        .location {
+            display: inline-block;
+            background-color: #9e2a2b;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            margin: 15px 0 0 0;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #3a2414;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>日本の名湯めぐり</h1>
+        <p>〜心も体も癒やされる、歴史ある温泉地のご紹介〜</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="onsen-grid">
+
+            <div class="onsen-card" id="kusatsu">
+                <div class="onsen-image">湯畑の湯煙</div>
+                <div class="onsen-content">
+                    <span class="location">群馬県</span>
+                    <h2>草津温泉</h2>
+                    <p>日本三名泉の一つ。街の中心にある「湯畑（ゆばたけ）」からは、毎分毎分圧倒的な量の温泉が湧き出ており、圧巻の景色を楽しめます。強い酸性の湯が特徴で、高い殺菌力を持っています。</p>
+                    <ul class="features">
+                        <li><strong>泉質:</strong> 酸性泉</li>
+                        <li><strong>見どころ:</strong> 湯畑、湯もみショー</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="onsen-card" id="hakone">
+                <div class="onsen-image">富士を望む露天</div>
+                <div class="onsen-content">
+                    <span class="location">神奈川県</span>
+                    <h2>箱根温泉</h2>
+                    <p>都心からのアクセスが抜群の、日本屈指の大人気リゾート温泉地。広大なエリアに「箱根十七湯」と呼ばれる様々な泉質の温泉が点在しており、好みに合わせて温泉宿を選べるのが魅力です。</p>
+                    <ul class="features">
+                        <li><strong>泉質:</strong> 単純温泉、塩化物泉など多数</li>
+                        <li><strong>見どころ:</strong> 大涌谷、芦ノ湖、箱根神社</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="onsen-card" id="arima">
+                <div class="onsen-image">伝統の金泉・銀泉</div>
+                <div class="onsen-content">
+                    <span class="location">兵庫県</span>
+                    <h2>有馬温泉</h2>
+                    <p>日本最古の温泉の一つ。豊臣秀吉が愛したことでも有名です。鉄分を含み茶褐色をした「金泉（きんせん）」と、無色透明な「銀泉（ぎんせん）」という、全く異なる2つの名湯を楽しめます。</p>
+                    <ul class="features">
+                        <li><strong>泉質:</strong> 含鉄強塩泉（金泉）、二酸化炭素泉（銀泉）</li>
+                        <li><strong>見どころ:</strong> 湯本坂（古い街並み）、ねね橋</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 日本の名湯めぐり案内所. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
