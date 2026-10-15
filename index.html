@@ -3,95 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar System</title>
-    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
-    <script>
-        //を使い学習し、活用しました。
-        AFRAME.registerComponent('solar-system-click', {
-            init: function () {
-                const targetEntity = document.querySelector('#solar-system');
-                let isUp = false;
-                
-                this.el.addEventListener('click', () => {
-                    isUp = !isUp;
-                    const targetY = isUp ? 4 : 1.5;
-                    targetEntity.object3D.position.y = targetY;
-                });
-            }
-        });
-    </script>
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
+
+
 </head>
 <body>
-    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
-        <a-assets>
-            <img id="taiyou" src="taiyou.webp" alt="">
-            <img id="tikyuu" src="地球.jpg    " alt="">
-            <img id="mokusei" src="木星２.jpg" alt="">
-            <img id="kinnsei" src="金星.jpg" alt="">
-            <img id="hosi" src="星.jpg" alt="">
-            <img id="hosi2" src="hosi2.jpg" alt="">
-            <img id="utyuu" src="utyuu.jpg" alt="">
-        </a-assets>
-        <a-sky material="src:#utyuu"></a-sky>
-
-        <a-entity id="solar-system" animation="property: rotation; to: 0 360 0; dur: 10000; loop: true; easing: linear" position="0 1.5 -6">
-            <a-sphere
-              class="clickable"
-              material="src:#taiyou"
-              radius="1.5"
-              solar-system-click
-              >
-            </a-sphere>
-
-            
-            <a-ring radius-inner="2.49" radius-outer="2.51" rotation="90 0 0" material="color: #ffffff; opacity: 0.3; side: double"></a-ring>
-            <a-entity animation="property: rotation; to: 0 360 0; dur: 4000; loop: true; easing: linear">
-                <a-sphere
-                 position="2.5 0 0" 
-                 material="src:#tikyuu" 
-                 radius="0.3"
-                 ></a-sphere>
-            </a-entity>
-     
-            <a-ring radius-inner="3.99" radius-outer="4.01" rotation="90 0 0" material="color: #ffffff; opacity: 0.3; side: double"></a-ring>
-            <a-entity animation="property: rotation; to: 0 360 0; dur: 7000; loop: true; easing: linear">
-                <a-sphere 
-                position="4 0 0" 
-                material="src:#mokusei" 
-                radius="0.4"
-                ></a-sphere>
-            </a-entity>
-           
-            <a-ring radius-inner="5.49" radius-outer="5.51" rotation="90 0 0" material="color: #ffffff; opacity: 0.3; side: double"></a-ring>
-            <a-entity animation="property: rotation; to: 0 360 0; dur: 10000; loop: true; easing: linear">
-                <a-sphere 
-                position="5.5 0 0" 
-                material="src:#kinnsei" 
-                radius="0.35"
-                ></a-sphere>
-            </a-entity>
-         
-            <a-ring radius-inner="6.99" radius-outer="7.01" rotation="90 0 0" material="color: #ffffff; opacity: 0.3; side: double"></a-ring>
-            <a-entity animation="property: rotation; to: 0 360 0; dur: 13000; loop: true; easing: linear">
-                <a-sphere 
-                position="7 0 0" 
-                material="src:#hosi"
-                radius="0.45"
-                ></a-sphere>
-            </a-entity>
-            
-            <a-ring radius-inner="8.49" radius-outer="8.51" rotation="90 0 0" material="color: #ffffff; opacity: 0.3; side: double"></a-ring>
-            <a-entity animation="property: rotation; to: 0 360 0; dur: 16000; loop: true; easing: linear">
-                <a-sphere 
-                position="8.5 0 0" 
-                material="src:#hosi2"
-                radius="0.35"
-                ></a-sphere>
-            </a-entity>
-        </a-entity>
-
-        <a-camera position="0 4 3">
-        </a-camera>
+    <a-scene embedded arjs="sourceType: webcam">
+       <a-marker preset="hiro" >
+         <a-box
+         position="-1 0.5 1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="1 0.5 1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="3 0.5 1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="-1 0.5 -1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="1 0.5 -1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="3 0.5 -1" color="skyblue"
+        ></a-box>
+           <a-box
+         position="-1 0.5 -3" color="skyblue"
+        ></a-box>
+           <a-box
+         position="1 0.5 -3" color="skyblue"
+        ></a-box>
+           <a-box
+         position="3 0.5 -3" color="skyblue"
+        ></a-box>
+       </a-marker>
+       <a-entity camera></a-entity>
     </a-scene>
+    
 </body>
 </html>
