@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <style>
+        #hub{
+            position:fixed;
+            top: 20px;
+            left: 20px;
+            z-index:999;
+        
+        }
+        button{
+            font-size: 20px;
+            padding: 20 20;
+            border: none;
+            background-color: royalblue;
+            color: white;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        select{
+       font-size: 18px;
+       padding: 10px 12px;
+       border-radius: 8px;
+}
+    </style>
+
+
+</head>
+
+<body>
+    <div id="hub">
+        <select id="animationSelect">
+            <option value="CharacterArmature|Death">倒れる</option>
+            <option value="CharacterArmature|Wave">手を振る</option>
+        </select>
+        <button id="kakubutton">拡大</button>
+        <button id="syukubutton">縮小</button>
+        <button id="kaitebutton">右回転</button>
+        <button id="hkaitebutton">左回転</button>
+
+    </div>
+    <a-scene embedded arjs="sourceType: webcam">
+
+        <a-marker preset="hiro" smooth="true">
+            <a-entity id="model" position=" 0 0 0.2">
+                <a-gltf-model id="hu" src="hu.glb" position="0 0 0" scale="0.3 0.3 0.3" rotation="-90 0 0">
+            </a-entity>
+
+            </a-gltf-model>
+
+        </a-marker>
+
+        <a-entity camera></a-entity>
+
+    </a-scene>
+    <script>
+        const robot = document.getElementById("hu");
+        const animationSelect = document.getElementById("animationSelect");
+        const kakubutton = document.getElementById("kakubutton");
+        const kaitebutton = document.getElementById("kaitebutton");
+        const model = document.getElementById("model");
+        const hkaitebutton = document.getElementById("hkaitebutton");
+        const syukubutton = document.getElementById("syukubutton");
+        function changerobot(){
+            robot.setAttribute("animation-mixer","clip",animationSelect.value);
+        }
+
+        let size = 1;
+
+       function enlargeModel(){
+          size = size + 0.1;
+       model.setAttribute("scale", `${size} ${size} ${size}`);
+        }
+        let angle = 0;
+
+      function rotateModel() {
+            angle += 15;
+        model.setAttribute("rotation", `0 0 ${angle}`);
+        
+        }
+               function enlarge1Model(){
+          size = size - 0.1;
+       model.setAttribute("scale", `${size} ${size} ${size}`);
+        }
+              function rotate1Model() {
+            angle -= 15;
+        model.setAttribute("rotation", `0 0 ${angle}`);
+        
+        }
+         animationSelect.addEventListener("change",changerobot);
+         kaitebutton.addEventListener("click", rotateModel);
+         kakubutton.addEventListener("click", enlargeModel);
+         hkaitebutton.addEventListener("click", rotate1Model);
+         syukubutton.addEventListener("click", enlarge1Model);
+
+
+    </script>
+</body>
+
+</html>
